@@ -39,8 +39,15 @@ CREATE TABLE Bookings (
     user_id INT NOT NULL,
     match_id INT NOT NULL,
     seat_number VARCHAR(10),
-    payment_status VARCHAR(20),
-    total_cost DECIMAL(10, 2) NOT NULL,
+    payment_status VARCHAR(20) CHECK (
+        payment_status IN (
+            'Pending',
+            'Confirmed',
+            'Cancelled',
+            'Refunded'
+        )
+    ),
+    total_cost DECIMAL(10, 2) CHECK (total_cost >= 0),
     FOREIGN KEY (user_id) REFERENCES Users (user_id),
     FOREIGN KEY (match_id) REFERENCES Matches (match_id)
 );
