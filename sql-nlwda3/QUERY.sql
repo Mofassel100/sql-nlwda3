@@ -51,7 +51,7 @@ CREATE TABLE Bookings (
     FOREIGN KEY (user_id) REFERENCES Users (user_id),
     FOREIGN KEY (match_id) REFERENCES Matches (match_id)
 );
-
+-- user data inserted
 INSERT INTO
     Users (
         user_id,
@@ -88,7 +88,7 @@ VALUES (
         'Football Fan',
         NULL
     );
-
+-- Matches data inserted
 INSERT INTO
     Matches (
         match_id,
@@ -132,7 +132,7 @@ VALUES (
         80.00,
         'Available'
     );
-
+--  Booking data inserted
 INSERT INTO
     Bookings (
         booking_id,
@@ -224,6 +224,7 @@ order by bo.booking_id;
 select us.user_id, us.full_name, book.booking_id
 from users us full
     join bookings book on us.user_id = book.user_id;
+
 -- query 6
 select booking_id, match_id, total_cost
 from bookings
@@ -232,7 +233,8 @@ where
         select avg(total_cost)
         from bookings
     )
-    -- query 7
+
+-- query 7
 select
     match_id,
     fixture,
